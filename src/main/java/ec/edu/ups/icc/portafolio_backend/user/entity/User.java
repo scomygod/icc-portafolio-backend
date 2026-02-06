@@ -32,6 +32,12 @@ public class User {
     @Column(nullable = false)
     private LocalDateTime createdAt = LocalDateTime.now();
 
+    // Perfil editable
+    private String photoUrl;
+    private String headline;
+    @Column(length = 1000)
+    private String bio;
+
     public Long getId() { return id; }
     public String getName() { return name; }
     public void setName(String name) { this.name = name; }
@@ -44,4 +50,11 @@ public class User {
     public boolean isEnabled() { return enabled; }
     public void setEnabled(boolean enabled) { this.enabled = enabled; }
     public LocalDateTime getCreatedAt() { return createdAt; }
+
+    public String getPhotoUrl() { return photoUrl; }
+    public void setPhotoUrl(String photoUrl) { this.photoUrl = photoUrl; }
+    public String getHeadline() { return headline; }
+    public void setHeadline(String headline) { this.headline = headline; }
+    public String getBio() { return bio; }
+    public void setBio(String bio) { this.bio = bio; }
 }
