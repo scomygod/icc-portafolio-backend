@@ -30,6 +30,10 @@ spring:
 server:
   port: ${PORT:8080}
 
+google:
+  oauth:
+    clientId: ${GOOGLE_CLIENT_ID}
+
 
 app:
   jwt:

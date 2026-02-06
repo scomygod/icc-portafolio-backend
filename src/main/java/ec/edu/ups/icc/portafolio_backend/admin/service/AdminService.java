@@ -1,6 +1,7 @@
 package ec.edu.ups.icc.portafolio_backend.admin.service;
 
 import ec.edu.ups.icc.portafolio_backend.admin.dto.CreateUserRequest;
+import ec.edu.ups.icc.portafolio_backend.admin.dto.UpdateUserRequest;
 import ec.edu.ups.icc.portafolio_backend.admin.dto.UserResponse;
 import ec.edu.ups.icc.portafolio_backend.admin.entity.AdminAudit;
 import ec.edu.ups.icc.portafolio_backend.admin.repository.AdminRepository;
@@ -19,7 +20,8 @@ public class AdminService {
     private final PasswordEncoder passwordEncoder;
     private final AdminRepository adminRepository;
 
-    public AdminService(UserRepository userRepository, PasswordEncoder passwordEncoder, AdminRepository adminRepository) {
+    public AdminService(UserRepository userRepository, PasswordEncoder passwordEncoder,
+            AdminRepository adminRepository) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
         this.adminRepository = adminRepository;
@@ -43,7 +45,23 @@ public class AdminService {
 
     public List<UserResponse> listUsers() {
         return userRepository.findAll().stream()
-            .map(u -> new UserResponse(u.getId(), u.getName(), u.getEmail(), u.getRole().name()))
-            .toList();
+                .map(u -> new UserResponse(u.getId(), u.getName(), u.getEmail(), u.getRole().name()))
+                .toList();
+    }
+
+    public UserResponse updateUser(Long userId, UpdateUserRequest request) {
+        User user = userRepository.findById(userId).orElseThrow();
+        if (request.name() != null)
+            user.setName(request.name());
+        if (request.email() != null)
+            user.setEmail(request.email());
+        if (request.role() != null)
+            user.setRole(Role.valueOf(request.role()));
+        userRepository.save(user);
+        return new UserResponse(user.getId(), user.getName(), user.getEmail(), user.getRole().name());
+    }
+
+    public void deleteUser(Long userId) {
+        userRepository.deleteById(userId);
     }
 }

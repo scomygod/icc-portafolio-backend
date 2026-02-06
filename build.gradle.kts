@@ -19,6 +19,8 @@ repositories {
 }
 
 dependencies {
+    implementation("com.google.api-client:google-api-client:2.4.0")
+    implementation("com.google.oauth-client:google-oauth-client-jetty:1.34.1")
     // API REST
     implementation("org.springframework.boot:spring-boot-starter-web")
 

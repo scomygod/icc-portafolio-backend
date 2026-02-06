@@ -1,12 +1,14 @@
 package ec.edu.ups.icc.portafolio_backend.admin.controller;
 
 import ec.edu.ups.icc.portafolio_backend.admin.dto.CreateUserRequest;
+import ec.edu.ups.icc.portafolio_backend.admin.dto.UpdateUserRequest;
 import ec.edu.ups.icc.portafolio_backend.admin.dto.UserResponse;
 import ec.edu.ups.icc.portafolio_backend.admin.service.AdminService;
 import ec.edu.ups.icc.portafolio_backend.user.repository.UserRepository;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
+
 
 import java.util.List;
 
@@ -36,5 +38,17 @@ public class AdminController {
     @GetMapping("/users")
     public List<UserResponse> listUsers() {
         return adminService.listUsers();
+    }
+
+    @PreAuthorize("hasRole('ADMIN')")
+    @PutMapping("/users/{id}")
+    public UserResponse updateUser(@PathVariable Long id, @RequestBody UpdateUserRequest request) {
+        return adminService.updateUser(id, request);
+    }
+
+    @PreAuthorize("hasRole('ADMIN')")
+    @DeleteMapping("/users/{id}")
+    public void deleteUser(@PathVariable Long id) {
+        adminService.deleteUser(id);
     }
 }

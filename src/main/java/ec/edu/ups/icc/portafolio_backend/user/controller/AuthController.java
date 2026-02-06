@@ -6,6 +6,7 @@ import ec.edu.ups.icc.portafolio_backend.user.dto.RegisterRequest;
 import ec.edu.ups.icc.portafolio_backend.user.service.AuthService;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
+import ec.edu.ups.icc.portafolio_backend.user.dto.GoogleLoginRequest;
 
 @RestController
 @RequestMapping("/api/auth")
@@ -25,5 +26,10 @@ public class AuthController {
     @PostMapping("/register-admin")
     public AuthResponse registerAdmin(@RequestBody @Valid RegisterRequest request) {
         return authService.registerFirstAdmin(request);
+    }
+
+    @PostMapping("/google")
+    public AuthResponse google(@RequestBody GoogleLoginRequest request) {
+        return authService.loginWithGoogle(request.idToken());
     }
 }
