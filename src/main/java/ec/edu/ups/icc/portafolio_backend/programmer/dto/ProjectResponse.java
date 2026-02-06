@@ -1,5 +1,15 @@
 package ec.edu.ups.icc.portafolio_backend.programmer.dto;
 
-public class ProjectResponse {
-    
-}
+import java.util.List;
+
+public record ProjectResponse(
+    Long id,
+    String name,
+    String description,
+    String participation,
+    List<String> technologies,
+    String repoUrl,
+    String demoUrl,
+    String section,
+    boolean active
+) {}

@@ -1,5 +1,6 @@
 package ec.edu.ups.icc.portafolio_backend.programmer.dto;
 
-public class ContactRequest {
-    
-}
+public record ContactRequest(
+    String type,
+    String url
+) {}

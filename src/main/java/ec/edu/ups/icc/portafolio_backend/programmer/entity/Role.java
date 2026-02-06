@@ -1,5 +1,5 @@
 package ec.edu.ups.icc.portafolio_backend.programmer.entity;
 
-public class Role {
-    
+public enum Role {
+    ADMIN, PROGRAMMER, USER
 }

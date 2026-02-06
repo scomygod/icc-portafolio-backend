@@ -1,5 +1,14 @@
 package ec.edu.ups.icc.portafolio_backend.programmer.dto;
 
-public class ProjectRequest {
-    
-}
+import java.util.List;
+
+public record ProjectRequest(
+    String name,
+    String description,
+    String participation,
+    List<String> technologies,
+    String repoUrl,
+    String demoUrl,
+    String section,
+    boolean active
+) {}

@@ -1,5 +1,7 @@
 package ec.edu.ups.icc.portafolio_backend.user.dto;
 
-public class AuthResponse {
-    
-}
+public record AuthResponse(
+    String token,
+    String name,
+    String role
+) {}
