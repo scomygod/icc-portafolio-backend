@@ -53,6 +53,7 @@ public class ProjectService {
         p.setTechnologies(r.technologies());
         p.setRepoUrl(r.repoUrl());
         p.setDemoUrl(r.demoUrl());
+        p.setImageUrl(r.imageUrl());
         p.setSection(ProjectSection.valueOf(r.section()));
         p.setActive(r.active());
     }
@@ -61,7 +62,7 @@ public class ProjectService {
         return new ProjectResponse(
             p.getId(), p.getName(), p.getDescription(),
             p.getParticipation().name(), p.getTechnologies(),
-            p.getRepoUrl(), p.getDemoUrl(),
+            p.getRepoUrl(), p.getDemoUrl(), p.getImageUrl(),
             p.getSection().name(), p.isActive()
         );
     }

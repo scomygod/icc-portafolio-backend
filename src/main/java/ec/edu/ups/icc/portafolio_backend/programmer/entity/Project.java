@@ -25,6 +25,8 @@ public class Project {
     private String repoUrl;
     private String demoUrl;
 
+    private String imageUrl;
+
     @Enumerated(EnumType.STRING)
     private ProjectSection section;
 
@@ -47,6 +49,8 @@ public class Project {
     public void setRepoUrl(String repoUrl) { this.repoUrl = repoUrl; }
     public String getDemoUrl() { return demoUrl; }
     public void setDemoUrl(String demoUrl) { this.demoUrl = demoUrl; }
+    public String getImageUrl() { return imageUrl; }
+    public void setImageUrl(String imageUrl) { this.imageUrl = imageUrl; }
     public ProjectSection getSection() { return section; }
     public void setSection(ProjectSection section) { this.section = section; }
     public boolean isActive() { return active; }

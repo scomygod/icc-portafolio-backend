@@ -9,6 +9,7 @@ public record ProjectRequest(
     List<String> technologies,
     String repoUrl,
     String demoUrl,
+    String imageUrl,
     String section,
     boolean active
 ) {}
